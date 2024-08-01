@@ -17,9 +17,10 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  flutter_dotenv: ^5.0.2
   supabase_flutter: ^2.5.11
   flutter_lints: ^2.0.0
+  # multidex: ^2.0.1
 
 flutter:
 
