@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'config/supabase_config.dart';
+import 'login/LoginScreen.dart';
 import 'tests/UserFormPage.dart';
 
 Future<void> main() async {
@@ -15,7 +16,6 @@ class MyApp extends StatelessWidget {
     return FutureBuilder(
       future: initializeSupabase(),
       builder: (context, snapshot) {
-        // Show a loading spinner while initializing
         if (snapshot.connectionState != ConnectionState.done) {
           return const MaterialApp(
             home: Scaffold(
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
             ),
           );
         }
-        // Show error if initialization failed
+        // Mostrar erro se a inicialização falhar
         if (snapshot.hasError) {
           return MaterialApp(
             home: Scaffold(
@@ -31,13 +31,15 @@ class MyApp extends StatelessWidget {
             ),
           );
         }
-        // Proceed with the app once initialization is complete
         return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Flutter Auth',
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: const HomePage(),
+          home: const LoginScreen(),
+          // home: const HomePage(),
         );
       },
     );
